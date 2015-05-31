@@ -1,0 +1,7 @@
+<li>
+  <%= link_to game.title, game_path(game) %> 
+  <%= link_to 'Edit', edit_game_path(game) %>
+  <%= link_to 'Delete', game_path(game),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+</li>
