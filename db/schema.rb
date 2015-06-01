@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531201643) do
+ActiveRecord::Schema.define(version: 20150601221850) do
+
+  create_table "editors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "outlet"
+    t.string   "bio"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "games", force: :cascade do |t|
     t.string   "title"
@@ -20,6 +29,14 @@ ActiveRecord::Schema.define(version: 20150531201643) do
     t.string   "boxart"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.float    "score"
+    t.string   "link"
+    t.integer  "editor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
