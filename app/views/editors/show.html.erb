@@ -1,0 +1,20 @@
+<h1><%= @editor.name %></h1>
+
+<p>
+  <strong>Outlet:</strong>
+  <%= @editor.outlet %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @editor.bio %>
+</p>
+
+<div class='boxart'>
+  <%= image_tag @editor.image  %>
+</div>
+
+<h3>Reviews:</h3>
+<ul>
+  <%= render partial: 'shared/review', collection: @editor.reviews, as: :review %>
+</ul>

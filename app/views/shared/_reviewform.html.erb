@@ -1,0 +1,15 @@
+<%= form_for ([@review, @review.reviews.build]) do |f| %>
+  <div class="question-group">
+    <%= f.label :link %>
+    <%= f.text_field :link %>
+  </div>
+  <div class="question-group">
+    <%= f.label :editor_id %>
+    <%= f.text_field :editor_id %>
+  </div>
+  <div class="question-group">
+    <%= f.label :score %>
+    <%= f.text_field :score %>
+  </div>
+  <%= f.submit %>
+<% end %>

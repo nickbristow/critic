@@ -1,0 +1,24 @@
+<%= form_for @editor do |f| %>
+  <fieldset>
+    <p>    
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :bio %>
+      <%= f.text_area :bio %>
+    </p>
+
+    <p>
+      <%= f.label :outlet %>
+      <%= f.text_field :outlet %>
+    </p>
+
+    <p>
+      <%= f.label :image, 'Photo (link to jpg or png)' %>
+      <%= f.text_field :image %>
+    </p>
+  </fieldset>
+  <%= f.submit %>
+<% end %>

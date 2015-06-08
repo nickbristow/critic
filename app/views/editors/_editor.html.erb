@@ -1,0 +1,7 @@
+<li>
+  <%= link_to editor.name, editor_path(editor) %> 
+  <%= link_to 'Edit', edit_editor_path(editor) %>
+  <%= link_to 'Delete', editor_path(editor),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+</li>
