@@ -1,6 +1,8 @@
+require 'pry'
 class GamesController < ApplicationController
   def show
     @game = Game.find params[:id]
+    @review = Game.find params[:id]
   end
 
   def new

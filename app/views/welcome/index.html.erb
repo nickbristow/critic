@@ -1,9 +1,17 @@
 <h1>Welcome to Critic</h1>
 <p>
   <%= link_to "Add a Game", new_game_path %>
+  <%= link_to "Add an Editor", new_editor_path %>
 </p>
 <div id='games'>
+  <h2>Games</h2>
   <ul>
     <%= render @games %>
+  </ul>
+</div>
+<div id='editors'>
+  <h2>Editors</h2>
+  <ul>
+    <%= render @editors %>
   </ul>
 </div>

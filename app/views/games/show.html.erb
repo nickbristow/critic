@@ -1,3 +1,13 @@
 <h1><%= @game.title %></h1>
 <p><%= @game.description %></p>
 <div class='boxart'><%= image_tag @game.boxart  %></div>
+<div class='review-form'>
+  <%= render 'shared/reviewform' %>
+</div>
+<div class="reviews">
+  <h3>Reviews:</h3>
+  <ul>
+    <%= render partial: 'shared/review', collection: @game.reviews, as: :review %>
+  </ul>
+</div>
+
