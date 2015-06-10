@@ -1,5 +1,15 @@
 <h1><%= @game.title %></h1>
-<p><%= @game.description %></p>
+<p>
+  <strong>Description: </strong>
+  <%= @game.description %>
+</p>
+<p>
+  <strong>Consoles: </strong>
+  <% @game.consoles.each do |c| %>
+    <%= link_to c.abbr, console_path(c) %>
+  <% end %>
+</p>
+
 <div class='boxart'><%= image_tag @game.boxart  %></div>
 <div class='review-form'>
   <%= render 'shared/reviewform' %>

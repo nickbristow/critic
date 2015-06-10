@@ -1,0 +1,5 @@
+<h1><%= @console.name %></h1>
+<h2>Games</h2>
+<ul>
+  <%= render partial: 'games/game', collection: @console.games, as: :game %>
+</ul>

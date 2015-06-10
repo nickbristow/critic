@@ -17,10 +17,24 @@ editors = Editor.create([{name: 'Nick Bristow', outlet: 'Geekly Inc', bio: 'My b
                          {name: 'Alexander Sliwinski', outlet: 'Joystiq', bio: 'My bio is here for you to read', image:'image.jpg'},
                          {name: 'Justin McElroy', outlet: 'Polygon', bio: 'My bio is here for you to read', image:'image.jpg'},
                          {name: 'Griffin McElroy', outlet: 'Polygon', bio: 'My bio is here for you to read', image:'image.jpg'},])
+Console.create([{name: 'Xbox One'},
+                           {name:'Xbox', abbr: 'Xbox'},
+                           {name: 'Xbox 360', abbr: '360'},
+                           {name: 'Playstation', abbr: 'PS1'},
+                           {name: 'Playstation 2', abbr: 'ps2'},
+                           {name: 'Playstation 3', abbr: 'ps3'},
+                           {name: 'Playstation 4', abbr: 'ps4'},
+                           {name: 'Wii', abbr: 'Wii'},
+                           {name: 'Wii U', abbr:'Wii U'}])
 
 games.each do |g|
   num_reviews = (rand * 10 + 1).to_i
+  c = Console.all
+  g.consoles << Console.all[(rand * 9).to_i]
+  g.consoles << Console.all[(rand * 9).to_i]
+
   num_reviews.times do 
     g.reviews.create({score: ((rand*100)+1).to_i, link: "https://www.google.com", editor_id: ((rand*5)+1).to_i })
   end
+  g.save
 end
