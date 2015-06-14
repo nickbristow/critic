@@ -1,7 +1,7 @@
-<li>
-  <%= link_to editor.name, editor_path(editor) %> 
-  <%= link_to 'Edit', edit_editor_path(editor) %>
-  <%= link_to 'Delete', editor_path(editor),
+<tr>
+  <td><%= link_to editor.name, editor_path(editor) %> </td>
+  <td><%= link_to 'Edit', edit_editor_path(editor) %></td>
+  <td><%= link_to 'Delete', editor_path(editor),
                         method: :delete,
-                        data: { confirm: 'Are you sure?' } %>
-</li>
+                        data: { confirm: 'Are you sure?' } %></td>
+</tr>

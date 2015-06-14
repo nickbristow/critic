@@ -1,0 +1,34 @@
+<h2 class="sub-header">Games</h2>
+<div class="table-responsive">
+  <table class="table table-striped datatable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Consoles</th>
+        <th>Release Dates</th>
+        <th>Reviews</th>
+        <th>Review Avg</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @games.each do |g| %>
+        <tr>
+          <td><%= link_to g.title, game_path(g) %></td>
+          <td>
+            <% g.consoles.each do |c| %>
+              <%= link_to c.abbr, console_path(c) %>
+            <% end %>
+          </td>
+          <td><%= g.releasedate %></td>
+          <td><%= g.reviews.count %></td>
+          <td><%= g.meta_score %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<script>
+  $(document).ready( function () { 
+    $('.datatable').DataTable();
+  });
+</script>

@@ -1,0 +1,26 @@
+<h2 class="sub-header">Editors</h2>
+<div class="table-responsive">
+  <table id='datatable' class="table table-striped datatable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Outlet</th>
+        <th>Reviews</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @editors.each do |e| %>
+        <tr>
+          <td><%= link_to e.name, editor_path(e) %></td>
+          <td><%= e.outlet %></td>
+          <td><%= e.reviews.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<script>
+  $(document).ready( function () { 
+    $('.datatable').DataTable();
+  });
+</script>
