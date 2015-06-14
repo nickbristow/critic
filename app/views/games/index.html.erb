@@ -21,7 +21,7 @@
           </td>
           <td><%= g.releasedate %></td>
           <td><%= g.reviews.count %></td>
-          <td><%= g.meta_score %></td>
+          <td><%= number_with_precision(g.meta_score, precision: 1)%>%</td>
         </tr>
       <% end %>
     </tbody>

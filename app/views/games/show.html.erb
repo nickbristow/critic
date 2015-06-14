@@ -14,10 +14,7 @@
 <div class='review-form'>
   <%= render 'shared/reviewform' %>
 </div>
-<div class="reviews">
-  <h3>Reviews:</h3>
-  <ul>
-    <%= render partial: 'shared/review', collection: @game.reviews, as: :review %>
-  </ul>
+<div class="row">
+  <%= render partial: 'shared/reviews', object: @game.reviews %>
 </div>
 

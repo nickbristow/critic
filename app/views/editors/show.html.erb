@@ -14,7 +14,6 @@
   <%= image_tag @editor.image  %>
 </div>
 
-<h3>Reviews:</h3>
-<ul>
-  <%= render partial: 'shared/review', collection: @editor.reviews, as: :review %>
-</ul>
+<div class="row">
+  <%= render partial: 'shared/reviews', object: @editor.reviews %>
+</div>

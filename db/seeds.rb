@@ -49,14 +49,14 @@ require 'csv'
 
 def add_new_game row
   game = Game.create({title: row[0], description: "missing", 
-    boxart: "missing.jpg", releasedate: "missing"})
+    boxart: "missing_screen.png", releasedate: "missing"})
   game.consoles << Console.last
   game
 end
 
 def add_new_editor row
   editor = Editor.create({name: row[1], outlet: 'missing',
-                          bio: 'missing', image: 'missing.jpg'})
+                          bio: 'missing', image: 'missing_screen.png'})
   editor
 end
 
