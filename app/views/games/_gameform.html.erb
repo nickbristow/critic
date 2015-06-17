@@ -1,27 +1,26 @@
+
 <%= form_for @game do |f| %>
-  <fieldset>
-    <p>    
+    <div class='form-group'>    
       <%= f.label :title %>
       <%= f.text_field :title %>
-    </p>
+    </div>
 
-    <p>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </p>
+    <div class='form-group'>
+      <%= f.label :description, class: 'control-label' %>
+      <%= f.text_area :description,  class: 'form-control' %>
+    </div>
 
-    <p>
-      <%= f.label :releasedate %>
-      <%= f.date_select :releasedate %>
-    </p>
+    <div class='form-group'>
+      <%= f.label :releasedate, class: 'control-label'%>
+      <%= f.date_select :releasedate,  class: 'form-control' %>
+    </div>
 
-    <p>
-      <%= f.label :boxart, 'Box Art (jpg, png)' %>
-      <%= f.file_field :boxart %>
-    </p>
-    <p>
-      <%= collection_check_boxes(:console, :console_id, Console.all, :id, :abbr) %>
-    </p>
-  </fieldset>
+    <div class='form-group'>
+      <%= f.label :boxart, 'Box Art (jpg, png)', class: 'control-label' %>
+      <%= f.file_field :boxart,  class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= collection_check_boxes(:console, :console_id, Console.all, :id, :abbr, {:item_wrapper_class => 'checkbox'}) %>
+    </div>
   <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>

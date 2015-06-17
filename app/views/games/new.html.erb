@@ -1,8 +1,4 @@
-<div class="container">
-  <div>
-    <h1>Add a game</h1>
-  </div>
-  <div class = 'errors'>
+<div class = 'errors'>
     <% if @game.errors.any? %>
       <ul>
         <% @game.errors.full_messages.each do |msg| %>
@@ -10,6 +6,16 @@
         <% end %>
       </ul>
     <% end %>
+</div>
+<div class="container">
+  <div class="col-md-6">
+    <div class="panel panel-info">
+      <div class='panel-heading'>
+        <h2>Add a game</h2>
+      </div>
+      <div class="panel-body">
+        <%= render 'gameform'%>
+      </div>
+    </div>
   </div>
-  <%= render 'gameform'%>
 </div>
