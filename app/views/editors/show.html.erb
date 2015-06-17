@@ -1,5 +1,9 @@
 <h1><%= @editor.name %></h1>
-
+<div>
+  <% if can? :update, @editor %>
+    <%= link_to 'Edit', edit_editor_path(@editor) %>
+  <% end %>
+</div>
 <p>
   <strong>Outlet:</strong>
   <%= @editor.outlet %>

@@ -1,7 +1,11 @@
 <h1>Welcome to Critic</h1>
 <p>
-  <%= link_to "Add a Game", new_game_path %>
-  <%= link_to "Add an Editor", new_editor_path %>
+  <% if can? :create, Game %>
+    <%= link_to "Add a Game", new_game_path %>
+  <% end %>
+  <% if can? :create, Editor %>
+    <%= link_to "Add an Editor", new_editor_path %>
+  <% end %>
 </p>
 <div class="row">
   <div class="col-md-6">
@@ -11,6 +15,16 @@
       </div>
       <div class="panel-body">
         <table class="table table-striped">
+          <tr>
+            <th scope='col'>Title</th>
+            <th scope='col'>Average</th>
+            <% if can? :update, Game %>
+              <th></th>
+            <% end %>
+            <% if can? :destroy, Game %>
+              <th></th>
+            <% end %>
+          </tr>
           <%= render @games %>
         </table>
       </div>

@@ -1,7 +1,11 @@
 <tr>
   <td><%= link_to editor.name, editor_path(editor) %> </td>
-  <td><%= link_to 'Edit', edit_editor_path(editor) %></td>
-  <td><%= link_to 'Delete', editor_path(editor),
+  <% if can? :update, editor %>
+    <td><%= link_to 'Edit', edit_editor_path(editor) %></td>
+  <% end %>
+  <% if can? :destroy, editor %>
+    <td><%= link_to 'Delete', editor_path(editor),
                         method: :delete,
                         data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
 </tr>

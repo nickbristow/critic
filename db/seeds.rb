@@ -30,6 +30,11 @@ Console.create([{name: 'X-box One', abbr: 'Xbox One'},
                            {name: 'Nintendo 64', abbr: 'N64'},
                            {name: 'missing', abbr:'missing'}])
 
+User.create([{email: 'richard.nick.bristow@gmail.com',
+              password: 'password',
+              password_confirmation: 'password',
+              is_admin: true}])
+
 
 # games.each do |g|
 #   num_reviews = (rand * 10 + 1).to_i

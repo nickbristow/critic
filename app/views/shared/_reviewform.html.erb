@@ -5,8 +5,12 @@
     <%= f.text_field :link %>
   </div>
   <div class="question-group">
-    <%= f.label :editor_id %>
-    <%= f.text_field :editor_id %>
+    <label for="review[editor_id]">Editor</label>
+    <select name="review[editor_id]" id="review[editor_id]">
+      <% Editor.all.each do |editor| %>
+        <option value="<%= editor.id %>"><%= editor.name %></option>
+      <% end %>
+    </select>
   </div>
   <div class="question-group">
     <%= f.label :score %>
