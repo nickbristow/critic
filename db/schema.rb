@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150617142959) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "consoles", force: :cascade do |t|
     t.string   "name"
     t.string   "abbr"
@@ -25,8 +28,8 @@ ActiveRecord::Schema.define(version: 20150617142959) do
     t.integer "console_id"
   end
 
-  add_index "consoles_games", ["console_id"], name: "index_consoles_games_on_console_id"
-  add_index "consoles_games", ["game_id"], name: "index_consoles_games_on_game_id"
+  add_index "consoles_games", ["console_id"], name: "index_consoles_games_on_console_id", using: :btree
+  add_index "consoles_games", ["game_id"], name: "index_consoles_games_on_game_id", using: :btree
 
   create_table "editors", force: :cascade do |t|
     t.string   "name"
@@ -85,7 +88,7 @@ ActiveRecord::Schema.define(version: 20150617142959) do
     t.boolean  "is_admin",               default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
