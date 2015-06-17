@@ -9,7 +9,10 @@ class GamesController < ApplicationController
     @review = @game.reviews.build
     if can? :create, Userreview
       if @game.userreviews.any?
-        @user_score = @game.userreviews.where(user_id: current_user.id).last.score
+        @user_score = @game.userreviews.where(user_id: current_user.id) #.last.score
+        if @user_score.any?
+          @user_score = @user_score.last.score
+        end
       else
         @user_score = 1
       end
