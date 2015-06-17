@@ -26,7 +26,9 @@ class Game < ActiveRecord::Base
     reviews = self.reviews
     total = 0
     reviews.each do |review|
-      total = review.score + total
+      unless review.id.nil?
+        total = review.score + total
+      end
     end
     total / reviews.count
   end
@@ -42,12 +44,14 @@ class Game < ActiveRecord::Base
       #Figure out the weight of each add to toatal
       ############################################
       reviews.each do |review|
-        metaweight = Metaweight.where("user_id = :user_id AND editor_id = :editor_id", 
-                                  {user_id: user_id, editor_id: review.editor.id})
-        if metaweight.any?
-          weighted_reviews << {review: review, weight: metaweight.last.weight}
-        else
-          weighted_reviews << {review: review, weight: 100000.0}
+        unless review.id.nil?
+          metaweight = Metaweight.where("user_id = :user_id AND editor_id = :editor_id", 
+                                    {user_id: user_id, editor_id: review.editor.id})
+          if metaweight.any?
+            weighted_reviews << {review: review, weight: metaweight.last.weight}
+          else
+            weighted_reviews << {review: review, weight: 100000.0}
+          end
         end
       end
       weighted_reviews = weighted_reviews.sort_by {|h| h[:weight]}
@@ -55,16 +59,22 @@ class Game < ActiveRecord::Base
 
       mult = 2
       weighted_reviews.each_with_index do |weighted_review, index|
-        if weighted_review[:weight] > 10000.0
-          total = weighted_review[:review].score + total
-          reviews_count = reviews_count + 1
-        else
-          total = (weighted_review[:review].score * mult) + total
-          reviews_count = reviews_count + mult
-          mult = mult + 1
+        unless weighted_review.nil?
+          if weighted_review[:weight] > 10000.0
+            total = weighted_review[:review].score + total
+            reviews_count = reviews_count + 1
+          else
+            total = (weighted_review[:review].score * mult) + total
+            reviews_count = reviews_count + mult
+            mult = mult + 1
+          end
         end
       end
-      total / reviews_count
+      if reviews_count == 0
+        'N/A'
+      else
+        total / reviews_count
+      end
       ############################################
       #/end
       ############################################

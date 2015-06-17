@@ -22,6 +22,10 @@
   </p>
 
   <div class='boxart'><%= image_tag @game.boxart.url(:thumb), class: 'img-thumbnail' %></div>
+  <div> 
+    <strong>Average Score: </strong>
+      <%= number_with_precision(@game.meta_score(current_user), precision: 1) %>%
+  </div>
   <% if can? :create, Userreview %>
     <div class='review-form'>
       <%= render 'shared/userreviewform' %>

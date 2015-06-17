@@ -1,5 +1,24 @@
-<h1><%= @console.name %></h1>
-<h2>Games</h2>
-<ul>
-  <%= render partial: 'games/game', collection: @console.games, as: :game %>
-</ul>
+<div class="container">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3>Games for <%= @console.name %></h3>
+      </div>
+      <div class="panel-body">
+        <table class='table table-striped datatable dataTable no-footer'>
+          <tr>
+            <th scope='col'>Title</th>
+            <th scope='col'>Average</th>
+            <% if can? :update, Game %>
+              <th></th>
+            <% end %>
+            <% if can? :destroy, Game %>
+              <th></th>
+            <% end %>
+          </tr>
+          <%= render partial: 'games/game', collection: @console.games, as: :game %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
