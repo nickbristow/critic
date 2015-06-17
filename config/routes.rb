@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :games do 
     resources :reviews
+    resources :userreviews
   end
   resources :editors
   resources :consoles

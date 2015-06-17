@@ -21,6 +21,11 @@
 </p>
 
 <div class='boxart'><%= image_tag @game.boxart.url(:thumb) %></div>
+<% if can? :create, Userreview %>
+  <div class='review-form'>
+    <%= render 'shared/userreviewform' %>
+  </div>
+<% end %>
 <% if can? :create, Review %>
   <div class='review-form'>
     <%= render 'shared/reviewform' %>

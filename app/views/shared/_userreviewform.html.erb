@@ -1,0 +1,15 @@
+<%= form_for ([@game, @game.userreviews.build]) do |f| %>
+  <h3>Your Score</h3>
+  <div class="question-group">
+    <label for="userreview[score]">Score</label>
+    <select name="userreview[score]" id="userreview[score]">
+      <% 1.upto(100) do |score| %>
+        <option value="<%= score %>" <%= score == @user_score ? 'selected' : '' %> >
+          <%= score %>
+        </option>
+      <% end %>
+    </select>
+  </div>
+  <input type='hidden' name='userreview[user_id]' value="<%= current_user.id %>">
+  <%= f.submit "save", class: "btn btn-primary" %>
+<% end %>
