@@ -1,23 +1,25 @@
-<h1><%= @editor.name %></h1>
-<div>
-  <% if can? :update, @editor %>
-    <%= link_to 'Edit', edit_editor_path(@editor) %>
-  <% end %>
-</div>
-<p>
-  <strong>Outlet:</strong>
-  <%= @editor.outlet %>
-</p>
+<div class="container">
+  <h1><%= @editor.name %></h1>
+  <div>
+    <% if can? :update, @editor %>
+      <%= link_to 'Edit', edit_editor_path(@editor) %>
+    <% end %>
+  </div>
+  <p>
+    <strong>Outlet:</strong>
+    <%= @editor.outlet %>
+  </p>
 
-<p>
-  <strong>Bio:</strong>
-  <%= @editor.bio %>
-</p>
+  <p>
+    <strong>Bio:</strong>
+    <%= @editor.bio %>
+  </p>
 
-<div class='boxart'>
-  <%= image_tag @editor.avatar.url(:thumb) %>
-</div>
+  <div class='boxart'>
+    <%= image_tag @editor.avatar.url(:thumb) %>
+  </div>
 
-<div class="row">
-  <%= render partial: 'shared/reviews', object: @editor.reviews %>
+  <div class="row">
+    <%= render partial: 'shared/reviews', object: @editor.reviews %>
+  </div>
 </div>

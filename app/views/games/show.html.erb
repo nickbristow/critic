@@ -1,37 +1,38 @@
-<h1><%= @game.title %></h1>
-<div>
-  <% if can? :update, @game %>
-  <%= link_to 'Edit', edit_game_path(@game) %>, 
-  <% end %>
-  <% if can? :destroy, @game %>
-    <%= link_to 'Delete', game_path(@game),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %>
-  <% end %>
-</div>                        
-<p>
-  <strong>Description: </strong>
-  <%= @game.description %>
-</p>
-<p>
-  <strong>Consoles: </strong>
-  <% @game.consoles.each do |c| %>
-    <%= link_to c.abbr, console_path(c) %>
-  <% end %>
-</p>
+<div class="container">
+  <h1><%= @game.title %></h1>
+  <div>
+    <% if can? :update, @game %>
+    <%= link_to 'Edit', edit_game_path(@game) %>, 
+    <% end %>
+    <% if can? :destroy, @game %>
+      <%= link_to 'Delete', game_path(@game),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>                        
+  <p>
+    <strong>Description: </strong>
+    <%= @game.description %>
+  </p>
+  <p>
+    <strong>Consoles: </strong>
+    <% @game.consoles.each do |c| %>
+      <%= link_to c.abbr, console_path(c) %>
+    <% end %>
+  </p>
 
-<div class='boxart'><%= image_tag @game.boxart.url(:thumb) %></div>
-<% if can? :create, Userreview %>
-  <div class='review-form'>
-    <%= render 'shared/userreviewform' %>
+  <div class='boxart'><%= image_tag @game.boxart.url(:thumb) %></div>
+  <% if can? :create, Userreview %>
+    <div class='review-form'>
+      <%= render 'shared/userreviewform' %>
+    </div>
+  <% end %>
+  <% if can? :create, Review %>
+    <div class='review-form'>
+      <%= render 'shared/reviewform' %>
+    </div>
+  <% end %>
+  <div class="row">
+    <%= render partial: 'shared/reviews', object: @game.reviews %>
   </div>
-<% end %>
-<% if can? :create, Review %>
-  <div class='review-form'>
-    <%= render 'shared/reviewform' %>
-  </div>
-<% end %>
-<div class="row">
-  <%= render partial: 'shared/reviews', object: @game.reviews %>
-</div>
-
+</div.

@@ -21,11 +21,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div><%= notice %></div>
+  <div><%= alert %></div>
   <%= render 'layouts/header' %>
-  <div class="notice"><%= notice %></div>
-  <div class="alert"><%= alert %></div>
-  <div class="container" role='main'>
-    <%= yield %>
-  </div>
+  <%= yield %>
 </body>
 </html>
