@@ -14,22 +14,24 @@
         </thead>  
         <tbody>
           <% reviews.each do |review| %>
-            <tr>
-              <td>
-                <%= link_to review.game.title, game_path(review.game) %>
-              </td> 
-              <td>
-                <%= link_to review.editor.name, editor_path(review.editor) %>
-              </td>
-              <td><strong><%= review.score %></score></td>
-              <td>
-                <%= link_to 'read', review.link %>
-              </td>
-              <td>
-                <%= link_to 'delete', game_review_path(review.game, review),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } %>
-              </td>
+            <% if review.id %>
+              <tr>
+                <td>
+                  <%= link_to review.game.title, game_path(review.game) %>
+                </td> 
+                <td>
+                  <%= link_to review.editor.name, editor_path(review.editor) %>
+                </td>
+                <td><strong><%= review.score %></score></td>
+                <td>
+                  <%= link_to 'read', review.link %>
+                </td>
+                <td>
+                  <%= link_to 'delete', game_review_path(review.game, review),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+                </td>
+            <% end %>
             </tr>
           <% end %>
         </tbody>

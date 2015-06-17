@@ -1,4 +1,13 @@
 <div>
   <h1>Add a game</h1>
 </div>
+<div class = 'errors'>
+  <% if @game.errors.any? %>
+    <ul>
+      <% @game.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 <%= render 'gameform'%>

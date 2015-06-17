@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to game.title, game_path(game) %></td>
-  <td><strong><%= number_with_precision(game.meta_score, precision: 1) %>%</strong></td>
+  <td><strong><%= number_with_precision(game.meta_score(current_user), precision: 1) %>%</strong></td>
   
   <% if can? :update, game %>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>

@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   
   def show
     @game = Game.find params[:id]
-    @review = Game.find params[:id]
+    @review = @game.reviews.build
     # binding.pry
     if can? :create, Userreview
       if @game.userreviews.any?
@@ -15,8 +15,6 @@ class GamesController < ApplicationController
         @user_score = 1
       end
     end
-
-
     # where('title LIKE :query OR description LIKE :query', query: "%#{query}%")
   end
 
