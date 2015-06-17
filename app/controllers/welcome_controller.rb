@@ -3,4 +3,7 @@ class WelcomeController < ApplicationController
     @games = params[:q] ? Game.search_for(params[:q]) : Game.all
     @editors = params[:q] ? Editor.search_for(params[:q]) : Editor.all
   end
+  
+  def about
+  end
 end

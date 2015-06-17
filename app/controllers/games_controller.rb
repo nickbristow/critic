@@ -15,6 +15,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new game_params
+    save_console_associations(@game)
 
     if @game.save
       redirect_to @game
@@ -29,6 +30,8 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find params[:id]
+    @game.consoles.delete_all
+    save_console_associations(@game)
     if @game.update(game_params)
       redirect_to @game
     else
@@ -44,6 +47,18 @@ class GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:title, :description, :releasedate, :boxart)
+    params.require(:game).permit(:title, :description, :releasedate, :boxart, :console_id => [])
+  end
+
+  def console_params
+    params.require(:console).permit(:console_id => [])
+  end
+
+  def save_console_associations game 
+    console_ids = console_params[:console_id]
+    console_ids.reject! {|c| c.empty? }
+    if console_ids.any?
+      game.consoles << Console.find(console_ids)
+    end
   end
 end

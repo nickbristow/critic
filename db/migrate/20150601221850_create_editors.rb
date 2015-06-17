@@ -4,7 +4,6 @@ class CreateEditors < ActiveRecord::Migration
       t.string :name
       t.string :outlet
       t.string :bio
-      t.string :image
 
       t.timestamps null: false
     end

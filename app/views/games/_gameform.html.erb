@@ -16,9 +16,12 @@
     </p>
 
     <p>
-      <%= f.label :boxart, 'Box Art (link to jpg or png)' %>
-      <%= f.text_field :boxart %>
+      <%= f.label :boxart, 'Box Art (jpg, png)' %>
+      <%= f.file_field :boxart %>
+    </p>
+    <p>
+      <%= collection_check_boxes(:console, :console_id, Console.all, :id, :abbr) %>
     </p>
   </fieldset>
-  <%= f.submit %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>

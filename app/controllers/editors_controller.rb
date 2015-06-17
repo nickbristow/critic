@@ -42,6 +42,6 @@ class EditorsController < ApplicationController
 
   private
   def editor_params
-    params.require(:editor).permit(:name, :outlet, :bio, :image)
+    params.require(:editor).permit(:name, :outlet, :bio, :avatar)
   end
 end

@@ -1,4 +1,10 @@
 <h1><%= @game.title %></h1>
+<div>
+  <%= link_to 'Edit', edit_game_path(@game) %>, 
+  <%= link_to 'Delete', game_path(@game),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+</div>                        
 <p>
   <strong>Description: </strong>
   <%= @game.description %>
@@ -10,7 +16,7 @@
   <% end %>
 </p>
 
-<div class='boxart'><%= image_tag @game.boxart  %></div>
+<div class='boxart'><%= image_tag @game.boxart.url(:thumb) %></div>
 <div class='review-form'>
   <%= render 'shared/reviewform' %>
 </div>

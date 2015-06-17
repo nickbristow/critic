@@ -1,4 +1,5 @@
 <%= form_for ([@review, @review.reviews.build]) do |f| %>
+  <h3>Add a review</h3>
   <div class="question-group">
     <%= f.label :link %>
     <%= f.text_field :link %>
@@ -11,5 +12,5 @@
     <%= f.label :score %>
     <%= f.text_field :score %>
   </div>
-  <%= f.submit %>
+  <%= f.submit "save", class: "btn btn-primary" %>
 <% end %>

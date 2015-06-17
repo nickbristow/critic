@@ -1,14 +1,20 @@
 class Game < ActiveRecord::Base
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_and_belongs_to_many :consoles
+  has_attached_file :boxart, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :boxart, :content_type => /\Aimage\/.*\Z/
 
   def meta_score
-    reviews = self.reviews
-    total = 0
-    reviews.each do |review|
-      total = review.score + total
+    if self.reviews.any?
+      reviews = self.reviews
+      total = 0
+      reviews.each do |review|
+        total = review.score + total
+      end
+      total / reviews.count
+    else
+      "N/A"
     end
-    total / reviews.count
   end
 
   def self.search query

@@ -17,15 +17,17 @@
 #                          {name: 'Alexander Sliwinski', outlet: 'Joystiq', bio: 'My bio is here for you to read', image:'image.jpg'},
 #                          {name: 'Justin McElroy', outlet: 'Polygon', bio: 'My bio is here for you to read', image:'image.jpg'},
 #                          {name: 'Griffin McElroy', outlet: 'Polygon', bio: 'My bio is here for you to read', image:'image.jpg'},])
-Console.create([{name: 'Xbox One'},
-                           {name:'Xbox', abbr: 'Xbox'},
+Console.create([{name: 'X-box One', abbr: 'Xbox One'},
                            {name: 'Xbox 360', abbr: '360'},
-                           {name: 'Playstation', abbr: 'PS1'},
-                           {name: 'Playstation 2', abbr: 'ps2'},
-                           {name: 'Playstation 3', abbr: 'ps3'},
+                           {name:'Xbox', abbr: 'Xbox'},
                            {name: 'Playstation 4', abbr: 'ps4'},
-                           {name: 'Wii', abbr: 'Wii'},
+                           {name: 'Playstation 3', abbr: 'ps3'},
+                           {name: 'Playstation 2', abbr: 'ps2'},
+                           {name: 'Playstation', abbr: 'PS1'},
                            {name: 'Wii U', abbr:'Wii U'},
+                           {name: 'Wii', abbr: 'Wii'},
+                           {name: 'Gamecube', abbr: 'GC'},
+                           {name: 'Nintendo 64', abbr: 'N64'},
                            {name: 'missing', abbr:'missing'}])
 
 
@@ -49,14 +51,14 @@ require 'csv'
 
 def add_new_game row
   game = Game.create({title: row[0], description: "missing", 
-    boxart: "missing_screen.png", releasedate: "missing"})
+     releasedate: "missing"})
   game.consoles << Console.last
   game
 end
 
 def add_new_editor row
   editor = Editor.create({name: row[1], outlet: 'missing',
-                          bio: 'missing', image: 'missing_screen.png'})
+                          bio: 'missing'})
   editor
 end
 

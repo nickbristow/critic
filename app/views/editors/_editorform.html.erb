@@ -16,9 +16,9 @@
     </p>
 
     <p>
-      <%= f.label :image, 'Photo (link to jpg or png)' %>
-      <%= f.text_field :image %>
+      <%= f.label :avatar, 'Photo (jpg, png)' %>
+      <%= f.file_field :avatar %>
     </p>
   </fieldset>
-  <%= f.submit %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>
